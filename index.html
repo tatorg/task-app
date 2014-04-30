@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta name="viewport"
+      content="initial-scale=1.0,width=device-width,user-scalable=yes" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+
+    <title>Tasks</title>
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src='js/Task.js'></script>
+    <script src='js/TaskList.js'></script>
+    <script src='js/ListOfTaskLists.js'></script>
+    <script src='js/TaskApp.js'></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
+  </head>
+
+  <body>
+
+		<section id="main-page" data-role="page">
+			<header data-role="header" data-nobackbtn="true">
+				<h1>Task App</h1>
+			</header>
+			<article id="main-content" data-role="content">
+				<p>
+					Hello, World!
+				</p>
+			</article>
+			<footer data-role="footer">
+			</footer>
+		</section>
+			
+    <section id="lol-page" data-role="page">
+      <header data-role='header' data-nobackbtn='true'>
+        <h1>Tasks</h1>
+			</header>
+
+      <article id="lol-content" data-role="content">
+
+        <ul id="lol-list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+        </ul>
+
+        <br/>
+          
+        <form action='#'>
+
+          <fieldset>
+            <div class="ui-field-contain">
+              <label for="task-list-name">Add Task List</label>
+              <input type="text" name="task-list-name" id="task-list-name" value=""
+                placeholder="Your new task list"
+                data-clear-btn="true"
+                />
+            </div>
+          </fieldset>
+          
+          <div class="ui-btn ui-input-btn ui-shadow">
+            Add
+            <input id="add" type="button"
+              data-corners="false"
+              data-enhanced="true"
+              value="Add">
+            </input>
+          </div>
+        </form>
+
+			</article>
+
+			<footer data-role="footer">
+			</footer>
+		</section>
+
+    <section id="list-page" data-role="page">
+      <header data-role='header' data-nobackbtn='true'>
+        <h1>**List Name**</h1>
+			</header>
+
+      <article id="llist-content" data-role="content">
+
+        <ul id="list-list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+        </ul>
+
+        <br/>
+          
+			</article>
+
+			<footer data-role="footer">
+			</footer>
+		</section>
+
+    <section id="task-page" data-role="page">
+      <header data-role='header' data-nobackbtn='true'>
+        <h1>**Task Name**</h1>
+			</header>
+
+      <article id="llist-content" data-role="content">
+
+        <ul id="list-list" class="touch" data-role="listview" data-icon="false" data-split-icon="delete">
+        </ul>
+
+        <br/>
+          
+			</article>
+
+			<footer data-role="footer">
+			</footer>
+		</section>
+
+  </body>
+</html>
