@@ -16,7 +16,7 @@ le-1.4.0.min.css">
     <script>
        $(document).on("mobileinit", function(){
           var taskApp = TaskApp(),
-           $.getJSON( "ajax/test.json", function( data ) {
+           $.getJSON( "https://www.stanford.edu/~torg/cgi-bin/scs-cs-50/json.cgi", function( data ) {
                 var ListofTaskLists = [];
               $.each( data, function( key, val ) {
                 ListofTaskLists.push(val);
