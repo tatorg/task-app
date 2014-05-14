@@ -17,17 +17,16 @@ le-1.4.0.min.css">
        $(document).ready(function(){
         console.log("starting execution");
           var taskApp = TaskApp(),
-              ListofTaskLists = []; 
+              listOfTaskLists = []; 
 ;  
           $.ajax({
             dataType: "json",
             url: "https://www.stanford.eachdu/~torg/cgi-bin/scs-cs-50/json.cgi",
-            data: data,
             success: function( data ) {
               $.each( data, function( key, val ) {
-                ListofTaskLists.push(val);
+                listOfTaskLists.push(val);
               });
-             console.dir(ListofTaskLists); 
+             console.dir(listOfTaskLists); 
             },
             error: function (xhr, ajaxOptions, thrownError) {
               alert("Status code: " + xhr.status);
@@ -43,7 +42,7 @@ le-1.4.0.min.css">
                
               });
 */
-        taskApp.init(ListofTaskLists);
+        taskApp.init(listOfTaskLists);
       });
     </script>
     <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js">
