@@ -66,12 +66,13 @@ var TaskListUI = function TaskListUI () {
 
             taskList.forEach(that.displayList);
 
-            $( '#add' ).on("click", function () {
+ /*           $( '#add' ).on("click", function () {
                 var listname = $('#listname').val(),
                 that.addList({ name: listname });
                 $( '#listname' ).val('');
             });
-        };
+*/
+        }
 
     }
 
