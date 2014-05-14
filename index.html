@@ -14,14 +14,39 @@ le-1.4.0.min.css">
     <script src='js/ListOfTaskLists.js'></script>
     <script src='js/TaskApp.js'></script>
     <script>
-       $(document).on("mobileinit", function(){
+       $(document).ready(function(){
           var taskApp = TaskApp(),
-            taskList = TaskList({ name: "My Tasks"});
-        taskApp.init(taskList);
+              listOfTaskLists = []; 
+;  
+          $.ajax({
+            dataType: "jsonp",
+            url: "https://www.stanford.edu/~torg/cgi-bin/scs-cs-50/json.cgi",
+            success: function( data ) {
+              $.each( data, function( key, val ) {
+                listOfTaskLists.push(val);
+              });
+             console.dir(listOfTaskLists); 
+            },
+            error: function (xhr, ajaxOptions, thrownError) {
+              alert("Status code: " + xhr.status);
+              alert("Error: " + thrownError);
+            }
+          });
+/*         
+           $.getJSON( "https://www.stanford.eachdu/~torg/cgi-bin/scs-cs-50/json.cgi", function( data ) {
+              $.each( data, function( key, val ) {
+                ListofTaskLists.push(val);
+              });
+                 console.dir(ListofTaskLists); 
+               
+              });
+*/
+        taskApp.init(listOfTaskLists);
       });
     </script>
-    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"
-></script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js">
+    </script>
+
   </head>
 
   <body>
@@ -39,7 +64,7 @@ le-1.4.0.min.css">
                         <footer data-role="footer">
                         </footer>
                 </section>
-
+-->
     <section id="lol-page" data-role="page">
       <header data-role='header' data-nobackbtn='true'>
         <h1>Tasks</h1>
@@ -52,6 +77,11 @@ ata-split-icon="delete">
         </ul>
 
         <br/>
+
+<a href="#newTaskListForm" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all" 
+  data-position-to="window">Add New Task List</a>
+
+<div data-role="popup" id="newTaskListForm" class="ui-content">
 
         <form action='#'>
 
@@ -74,8 +104,18 @@ ata-split-icon="delete">
               value="Add">
             </input>
           </div>
-        </form>
+           <div class="ui-btn ui-input-btn ui-shadow">
+            Cancel
+            <input id="cancel" data-rel="back" type="button"
+              data-corners="false"
+              data-enhanced="true"
+              value="Cancel">
+            </input> 
 
+<!--            $("#newTaskListForm").popup('close'); -->
+          </div>
+        </form>
+</div>
                         </article>
 
                         <footer data-role="footer">
@@ -100,7 +140,7 @@ data-split-icon="delete">
                         <footer data-role="footer">
                         </footer>
                 </section>
--->
+
     <section id="task-page" data-role="page">
       <header data-role='header' data-nobackbtn='true'>
         <h1 id="task-page-title">**Task Name**</h1>
