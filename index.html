@@ -13,9 +13,9 @@ le-1.4.0.min.css">
     <script src='js/TaskList.js'></script>
     <script src='js/ListOfTaskLists.js'></script>
     <script src='js/TaskApp.js'></script>
-    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js"></script>
     <script>
        $(document).ready(function(){
+        console.log("starting execution");
           var taskApp = TaskApp(),
               ListofTaskLists = []; 
 ;  
@@ -46,6 +46,9 @@ le-1.4.0.min.css">
         taskApp.init(ListofTaskLists);
       });
     </script>
+    <script src="http://code.jquery.com/mobile/1.4.0/jquery.mobile-1.4.0.min.js">
+    </script>
+
   </head>
 
   <body>
