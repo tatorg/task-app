@@ -55,7 +55,7 @@ var TaskListUI = function TaskListUI () {
             }
         },
 
-         loadListOfLists: function loadListOfLists (listOfLists) {
+        loadListOfLists: function loadListOfLists (listOfLists) {
             lists = listOfLists;
 
             $("form :input").on("keypress", function(e) {
@@ -71,7 +71,7 @@ var TaskListUI = function TaskListUI () {
                 that.addList({ name: listname });
                 $( '#listname' ).val('');
             });
-        }
+        };
 
     }
 
