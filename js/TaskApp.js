@@ -4,6 +4,10 @@ var TaskApp = function TaskApp () {
     that = {
 
         init: function init(taskList) {
+            $( document ).on("pagecreate", "lol-page", function () {
+                taskListUI.loadTaskList(taskList);
+            });
+
             // load task lists on page
             $( document ).on("pagecreate", "#task-page", function () {
                 taskListUI.loadTaskList(taskList);
