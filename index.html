@@ -19,7 +19,7 @@ le-1.4.0.min.css">
               listOfTaskLists = []; 
 ;  
           $.ajax({
-            dataType: "jsonp",
+            dataType: "json",
             url: "https://www.stanford.edu/~torg/cgi-bin/scs-cs-50/json.cgi",
             success: function( data ) {
               $.each( data, function( key, val ) {
