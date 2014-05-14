@@ -5,12 +5,12 @@ var TaskApp = function TaskApp () {
 
         init: function init(taskList) {
             $( document ).on("pagecreate", "lol-page", function () {
-                taskListUI.loadTaskList(taskList);
+                taskListUI.loadListOfLists(taskList);
             });
 
             // load task lists on page
             $( document ).on("pagecreate", "#task-page", function () {
-                taskListUI.loadTaskList(taskList);
+                taskListUI.loadTaskList();
             });
         }
     };
@@ -22,19 +22,17 @@ var TaskListUI = function TaskListUI () {
     var taskList;
 
     var  that = {
-        addTask: function addTask (task) {
-            var taskId = taskList.add(task);
-            that.displayTask(task, taskId);
+        addList: function addList (list) {
+            var listId = taskList.add(list);
+            that.displayList(list, listId);
         },
 
-        displayTask: function displayTask (task, taskId) {
-            $('#task-list').append(
+        displayList: function displayList (list, listId) {
+            $('#lol-list').append(
                   [
-                      '<li id="', taskId, '">',
+                      '<li id="', listId, '">',
                       '<a href="#">',
-                      task.name,
-                      '<br/>',
-                      task.details,
+                      list.name,
                       '</a>',
                       '<a href="#" class="delete">',
                       'Delete',
@@ -42,40 +40,39 @@ var TaskListUI = function TaskListUI () {
                     '</li>'
                   ].join('')
             );
-            $('#' + taskId + ' .delete').on( "click", function () {
-                that.removeTask($(this).parent('li'));
+            $('#' + listId + ' .delete').on( "click", function () {
+                that.removeList($(this).parent('li'));
             });
-            $('#task-list').listview('refresh');
+            $('#lol-list').listview('refresh');
         },
 
-        removeTask: function removeTask (taskItem) {
-            var taskId = taskItem.attr("id");
+        removeList: function removeList (listItem) {
+            var listId = listItem.attr("id");
 
-            if (taskList.remove(taskId)) {
-                taskItem.remove();
-                $('#task-list').listview('refresh');
+            if (taskList.remove(listId)) {
+                listItem.remove();
+                $('#lol-list').listview('refresh');
             }
         },
 
-        loadTaskList: function loadTaskList (newTaskList) {
-            taskList = newTaskList;
+         loadListOfLists: function loadListOfLists (listOfLists) {
+            lists = listOfLists;
 
             $("form :input").on("keypress", function(e) {
                 return e.keyCode != 13;
             });
 
-            $('#task-page-title').html(taskList.getName());
+            $('#lol-page-title').html(lists.getName());
 
-            taskList.forEach(that.displayTask);
+            taskList.forEach(that.displayList);
 
             $( '#add' ).on("click", function () {
-                var taskname = $('#taskname').val(),
-                taskdetails = $('#taskdetails').val();
-                that.addTask({ name: taskname, details: taskdetails });
-                $( '#taskname' ).val('');
-                $( '#taskdetails' ).val('');
+                var listname = $('#listname').val(),
+                that.addList({ name: listname });
+                $( '#listname' ).val('');
             });
         }
+
     }
 
     return that;
