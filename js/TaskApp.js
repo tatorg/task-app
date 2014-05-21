@@ -28,11 +28,11 @@ var TaskListUI = function TaskListUI () {
         },
 
         displayList: function displayList (list, listId) {
+
             $('#lol-list').append(
                   [
-                      '<li id="', listId, '">',
-                      '<a href="#">',
-                      list.name,
+                      '<li id="', list.name, '">',
+                      '<a href="#list-page">',
                       '</a>',
                       '<a href="#" class="delete">',
                       'Delete',

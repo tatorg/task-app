@@ -17,7 +17,11 @@ le-1.4.0.min.css">
        $(document).ready(function(){
           var taskApp = TaskApp(),
               listOfTaskLists = []; 
-;  
+
+             $(#newListCancel).on("click", function() {
+              $("#newTaskListForm").popup('close');
+
+              });  
           $.ajax({
             dataType: "json",
             url: "https://www.stanford.edu/~torg/cgi-bin/scs-cs-50/json.cgi",
@@ -29,7 +33,7 @@ le-1.4.0.min.css">
             },
             error: function (xhr, ajaxOptions, thrownError) {
               alert("Status code: " + xhr.status);
-              alert("Error: " + thrownError.responseText);
+              alert("Error: " + thrownError);
             }
           });
 /*         
@@ -78,7 +82,7 @@ ata-split-icon="delete">
 
         <br/>
 
-<a href="#newTaskListForm" data-rel="popup" class="ui-btn ui-btn-inline ui-corner-all" 
+<a href="#newTaskListForm" data-rel="popup" id="newListButton" class="ui-btn ui-btn-inline ui-corner-all" 
   data-position-to="window">Add New Task List</a>
 
 <div data-role="popup" id="newTaskListForm" class="ui-content">
@@ -106,7 +110,7 @@ ata-split-icon="delete">
           </div>
            <div class="ui-btn ui-input-btn ui-shadow">
             Cancel
-            <input id="cancel" data-rel="back" type="button"
+            <input id="newListCancel" data-rel="back" type="button"
               data-corners="false"
               data-enhanced="true"
               value="Cancel">
